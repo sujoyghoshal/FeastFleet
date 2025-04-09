@@ -1,0 +1,78 @@
+[SUJOY 👍  ->   SUMIT 👍]
+NOTES FOR SUMIT
+
+Base URL:
+http://localhost:5000/api/auth
+
+Endpoints:
+1. Signup (Register new user)
+---------------------------------
+POST /signup
+Body (JSON):
+{
+  "name": "Sujoy",
+  "email": "sujoy@example.com",
+  "password": "123456"
+}
+Success Response:
+{
+  "message": "User registered successfully",
+  "user": {
+    "_id": "user_id",
+    "name": "Sujoy",
+    "email": "sujoy@example.com",
+    "password": "hashed_password",
+    "createdAt": "...",
+    "updatedAt": "...",
+    "__v": 0
+  }
+}
+Error:
+{
+  "message": "User already exists"
+}
+
+
+2. Login (Authenticate user)
+---------------------------------
+POST /login
+Body (JSON):
+{
+  "email": "sujoy@example.com",
+  "password": "123456"
+}
+Success Response:
+{
+  "message": "Login successful",
+  "user": {
+    "_id": "user_id",
+    "name": "Sujoy",
+    "email": "sujoy@example.com",
+    "password": "hashed_password",
+    "createdAt": "...",
+    "updatedAt": "...",
+    "__v": 0
+  }
+}
+Error:
+{
+  "message": "Invalid credentials"
+}
+
+Headers:
+Content-Type: application/json
+
+Notes:
+- No token or session management (simple login system)
+- Passwords stored as bcrypt hashed
+- MongoDB database stores user data
+- Backend running at: http://localhost:5000
+- Test using Postman:
+    - Select POST method
+    - Enter URL: http://localhost:5000/api/auth/signup (or /login)
+    - Select Body -> raw -> JSON
+    - Add headers: Content-Type: application/json
+
+Tips:
+- React/Vite frontend can call this API using fetch/axios
+- Optional: can add token auth or JWT in future
